@@ -6,7 +6,7 @@
 * [Setup](#setup)
 
 ## General info
-This project implement Movie Theater Management System RESTful API using Flask-RESTful, SQLAlchemy and Redis. The system allows ordering chairs for the theater while maintaining the ability to take multiple orders simultaneously and the fact that specific chair can not be ordered for 2 different customers.
+This project implement Movie Theater Management System RESTful API using Flask-RESTful, PostgreSQL and Redis. The system allows ordering chairs for the theater while maintaining the ability to take multiple orders simultaneously and the fact that specific chair can not be ordered for 2 different customers.
 
 ## Stages
 The system is divided into 3 stages:
