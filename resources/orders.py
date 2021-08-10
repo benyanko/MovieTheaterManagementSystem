@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
 from models.ChairModel import ChairModel
 from cache import cache
+from setup.config import TIMEOUT
 import uuid
 
 
@@ -14,7 +15,7 @@ class Order(Resource):
         if chair:
             confirmation_id = str(uuid.uuid4())
             # add - Works like set() but does not overwrite the values of already existing keys (False for already existing keys).
-            if cache.add(str(_id), confirmation_id, timeout=(5 * 60)):
+            if cache.add(str(_id), confirmation_id, timeout=TIMEOUT):
                 chair.status = 'In Order'
                 return {'message': 'order must complete in the next 5 minutes',
                         'chair': chair.json(),
@@ -38,6 +39,7 @@ class PayOrder(Resource):
                     chair.status = 'Ordered'
                     chair.confirmation_id = confirmation_id
                     chair.save_to_db()
+                    cache.delete(str(_id))
                     return {'message': 'order completed',
                             'chair': chair.json(),
                             'confirmation_id': confirmation_id}

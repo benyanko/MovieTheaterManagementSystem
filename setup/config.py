@@ -17,5 +17,5 @@ CACHE_REDIS_PORT = os.environ['CACHE_REDIS_PORT'] or '6379'
 CACHE_REDIS_DB = os.environ['CACHE_REDIS_DB'] or '0'
 CACHE_REDIS_URL = os.environ['CACHE_REDIS_URL'] or 'redis://redis:6379/0'
 CACHE_DEFAULT_TIMEOUT = os.environ['CACHE_DEFAULT_TIMEOUT'] or '500'
-
+TIMEOUT = (60 * 5)
 
